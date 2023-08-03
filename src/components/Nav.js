@@ -1,9 +1,9 @@
-import "./Nav.css";
+import "./Nav.scss";
 
 function Nav() {
   return (
-    <div class="topnav">
-      <a class="active" href="#home">
+    <div className="topnav">
+      <a className="active" href="#home">
         Home
       </a>
       <a href="#news">News</a>
