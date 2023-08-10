@@ -3,12 +3,10 @@ import "./Nav.scss";
 function Nav() {
   return (
     <div className="topnav">
-      <a className="active" href="#home">
-        Home
-      </a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+      <a href="/">Home</a>
+      <a href="/time">Timer App</a>
+      <a href="/todo">Todo App</a>
+      <a href="/secret">Secret</a>
     </div>
   );
 }
