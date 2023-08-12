@@ -9,6 +9,7 @@ import Secret from "./pages/Secret";
 import Blog from "./pages/Blog";
 import DetailBlog from "./pages/Blog/DetailBlog";
 import AddNewBog from "./pages/Blog/AddNewBog";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/blog/:id" element={<DetailBlog />}></Route>
             <Route path="/blog/new-blog" element={<AddNewBog />}></Route>
             <Route path="/secret" element={<Secret />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </header>
       </div>

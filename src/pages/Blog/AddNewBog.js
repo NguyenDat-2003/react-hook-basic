@@ -16,6 +16,7 @@ function AddNewBog({ handleAddNew }) {
       alert("empty content");
       return;
     }
+
     let data = {
       title: title,
       body: content,
