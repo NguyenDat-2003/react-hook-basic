@@ -1,16 +1,38 @@
 import { useState } from "react";
+import axios from "axios";
 import "./Blog.scss";
 
-function AddNewBog() {
+function AddNewBog({ handleAddNew }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!title) {
+      alert("empty title");
+      return;
+    }
+    if (!content) {
+      alert("empty content");
+      return;
+    }
+    let data = {
+      title: title,
+      body: content,
+      userId: 1,
+    };
+    let res = await axios.post(
+      "https://jsonplaceholder.typicode.com/posts",
+      data
+    );
+    if (res && res.data) {
+      let newBlog = res.data;
+      handleAddNew(newBlog);
+    }
   };
 
   return (
-    <form className="add-new-container">
+    <form className="add-new-container" onSubmit={handleSubmit}>
       <div className="form-item">
         <label>Title:</label>
         <input
@@ -27,7 +49,7 @@ function AddNewBog() {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <button className="btn-addNew" onClick={handleSubmit}>
+      <button className="btn-addNew" type="submit">
         Submit
       </button>
     </form>
