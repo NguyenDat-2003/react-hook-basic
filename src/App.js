@@ -8,6 +8,7 @@ import Todo from "./pages/Todo App";
 import Secret from "./pages/Secret";
 import Blog from "./pages/Blog";
 import DetailBlog from "./pages/Blog/DetailBlog";
+import AddNewBog from "./pages/Blog/AddNewBog";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/todo" element={<Todo />}></Route>
             <Route path="/blog" element={<Blog />}></Route>
             <Route path="/blog/:id" element={<DetailBlog />}></Route>
+            <Route path="/blog/new-blog" element={<AddNewBog />}></Route>
             <Route path="/secret" element={<Secret />}></Route>
           </Routes>
         </header>

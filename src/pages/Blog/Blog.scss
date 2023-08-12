@@ -33,3 +33,29 @@
     margin: 10px;
     min-height: 100px;
 }
+
+.btn-addNew {
+    margin: 20px 0px;
+    padding: 6px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+    background-color: white;
+    cursor: pointer;
+}
+
+.add-new-container {
+    width: 400px;
+    font-size: 14px;
+    border: 1px solid grey;
+    .form-item{
+        padding: 5px;
+        margin: 10px 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-addNew{
+        margin: 20px auto;
+    }
+}
