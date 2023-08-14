@@ -1,5 +1,11 @@
+import YoutubeSearch from "../../components/YoutubeSearch";
+
 function Secret() {
-  return <div>Secret</div>;
+  return (
+    <>
+      <YoutubeSearch />
+    </>
+  );
 }
 
 export default Secret;
