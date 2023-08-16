@@ -7,8 +7,6 @@ function YoutubeSearch() {
   const [videos, setVideo] = useState([]);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {}, []);
-
   const handleSearchYT = async () => {
     // let res = await axios.get("https://www.googleapis.com/youtube/v3/search", {
     //   part: "snippet",
@@ -32,21 +30,25 @@ function YoutubeSearch() {
 
     if (res && res.data) {
       let raw = res.data.items;
-      let result = [];
-      if (raw && raw.length > 0) {
-        raw.map((item) => {
-          let obj = {};
-          obj.id = item.id.videoId;
-          obj.title = item.snippet.title;
-          obj.createdAt = item.snippet.publishedAt;
-          obj.author = item.snippet.channelTitle;
-          obj.desc = item.snippet.description;
-
-          result.push(obj);
-        });
-      }
-      setVideo(result);
+      setVideo(raw);
     }
+    // if (res && res.data) {
+    //   let raw = res.data.items;
+    //   let result = [];
+    //   if (raw && raw.length > 0) {
+    //     raw.map((item) => {
+    //       let obj = {};
+    //       obj.id = item.id.videoId;
+    //       obj.title = item.snippet.title;
+    //       obj.createdAt = item.snippet.publishedAt;
+    //       obj.author = item.snippet.channelTitle;
+    //       obj.desc = item.snippet.description;
+
+    //       result.push(obj);
+    //     });
+    //   }
+    //   setVideo(result);
+    // }
   };
 
   return (
@@ -62,12 +64,13 @@ function YoutubeSearch() {
       {videos &&
         videos.length > 0 &&
         videos.map((item) => {
+          console.log("CHeck item >>>", item);
           return (
             <div className="yt-result" key={item.id}>
               <div className="left">
                 <iframe
                   className="if-yt"
-                  src={`https://www.youtube.com/embed/${item.id}`}
+                  src={`https://www.youtube.com/embed/${item.id.videoId}`}
                   title="Tại sao con trai bây giờ lại nữ tính như vậy?"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -75,13 +78,17 @@ function YoutubeSearch() {
                 ></iframe>
               </div>
               <div className="right">
-                <div className="title">{item.title}</div>
+                <div className="title">{item.snippet.title}</div>
                 <div className="created-at">
                   Created At:
-                  {moment(item.createdAt).format("DD-MM-YY HH:mm:ss A")}
+                  {moment(item.snippet.publishedAt).format(
+                    "DD-MM-YY HH:mm:ss A"
+                  )}
                 </div>
-                <div className="author">Author : {item.author}</div>
-                <div className="desc">{item.desc}</div>
+                <div className="author">
+                  Author : {item.snippet.channelTitle}
+                </div>
+                <div className="desc">{item.snippet.description}</div>
               </div>
             </div>
           );
