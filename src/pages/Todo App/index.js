@@ -1,65 +1,13 @@
 //sử dụng useReducer thay cho state
-
 import { useReducer, useRef } from "react";
 
+import reducer, { initState } from "./reducer";
+import { setJob, addJob, deleteJob } from "./actions";
 //1. Init state
-const initState = {
-  job: "",
-  jobs: [],
-};
 
 //2.Actions
-const SET_JOB = "set_job";
-const ADD_JOB = "add_job";
-const DELETE_JOB = "delete_job";
-
-const setJob = (payload) => {
-  return {
-    type: SET_JOB,
-    payload,
-  };
-};
-const addJob = (payload) => {
-  return {
-    type: ADD_JOB,
-    payload,
-  };
-};
-const deleteJob = (payload) => {
-  return {
-    type: DELETE_JOB,
-    payload,
-  };
-};
 
 //3.Reducer
-const reducer = (state, action) => {
-  // console.log("action>>", action);
-  // console.log("Prev statre>>", state);
-
-  switch (action.type) {
-    case SET_JOB:
-      return {
-        ...state,
-        job: action.payload,
-      };
-    case ADD_JOB:
-      return {
-        ...state,
-        jobs: [...state.jobs, action.payload],
-      };
-    case DELETE_JOB:
-      const newJobs = [...state.jobs];
-      newJobs.splice(action.payload, 1);
-
-      return {
-        ...state,
-        jobs: newJobs,
-      };
-    default:
-      throw new Error("Invalid !!");
-  }
-};
 
 // 4. sử dụng useReducer
 
